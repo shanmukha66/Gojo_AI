@@ -1,0 +1,27 @@
+.DS_Store
+*.pem
+
+# env / secrets
+.env
+.env.*
+
+# python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+.venv-rag/
+
+# node / next
+node_modules/
+web/node_modules/
+web/.next/
+web/out/
+web/coverage/
+web/.vercel/
+
+# large local data
+datasets/
+

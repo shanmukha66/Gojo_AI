@@ -32,6 +32,24 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+!.env.local.example
+
+# local app state / generated data
+/data/app.db
+/data/app.db-shm
+/data/app.db-wal
+/data/exports
+/data/uploads
+/data/runtime
+/data/tmp
+/data/mock_clinical/generated-report-*.txt
+/public/uploads
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
 
 # vercel
 .vercel

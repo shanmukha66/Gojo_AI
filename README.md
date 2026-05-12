@@ -1,13 +1,12 @@
-# Explainable AI‑RAG Framework (Doctor + Patient)
+# GOJO Health App (Doctor + Patient)
 
-A dual‑portal healthcare assistant with a **Doctor workspace** (EHR + RAG evidence search) and a **Patient assistant** (first‑aid guidance from FirstAidQA). Data is synthetic (Synthea) and stored in Neo4j with embeddings for similarity search.
+A dual-portal healthcare assistant with a **Doctor workspace** (EHR + evidence search) and a **Patient assistant** (local first-aid guidance). Data is synthetic (Synthea) and stored in SQLite + Neo4j with local evidence retrieval.
 
 ## What’s Included
-- **Doctor portal**: patient search + RAG evidence search grounded in Neo4j embeddings
-- **Patient portal**: first‑aid Q&A (FirstAidQA dataset)
+- **Doctor portal**: patient search + evidence search grounded in local SQL + Neo4j text retrieval
+- **Patient portal**: local first-aid Q&A
 - **Local auth**: separate Doctor/Patient sessions (SQLite)
 - **Neo4j graph**: 5,000 synthetic patients from Synthea
-- **RAG server**: local FastAPI service on `127.0.0.1:8008`
 
 ---
 
@@ -17,32 +16,83 @@ A dual‑portal healthcare assistant with a **Doctor workspace** (EHR + RAG evid
 
 ---
 
-## Patient Assistant (FirstAidQA)
-The patient search uses the **FirstAidQA dataset** from Hugging Face and returns the **best single match**. It falls back to safe, general first‑aid tips if no dataset match is found.
+## Patient Assistant
+The patient first-aid assistant uses local safe first-aid knowledge and does not call external dataset APIs at runtime.
 
 If you want higher rate limits, add a token in:
 `/Volumes/workspace/Explainable-AI-RAG-Framework/web/.env.local`
 ```
-HF_TOKEN=your_huggingface_token_optional
 ```
 
 ---
 
 ## Doctor Workspace
 - Search patients by **name or ID**
-- RAG evidence search returns similar patient summaries using Neo4j vector search
+- Evidence search returns similar patient summaries using local SQL + Neo4j text retrieval
 - “Secondary suggestions” are advisory; final decision stays with the clinician
 
 ---
 
 ## Useful Scripts
 - `scripts/seed_neo4j_subset.py` — load patient graph from Synthea
-- `scripts/embed_patients.py` — generate patient summaries + embeddings
-- `scripts/rag_server.py` — FastAPI RAG server
-- `scripts/rag_query.py` — CLI query against Neo4j vector index
+- Doctor evidence search now runs inside Next.js using local SQL + Neo4j text retrieval.
+- Legacy external retrieval scripts are disabled; use the app evidence search page.
 
 ---
 
 ## Notes
-- Embeddings live on `:Patient.embedding` (vector index `patient_embedding`).
+- Evidence retrieval does not require an external embedding server.
 - Data is synthetic (Synthea) for research/demo use only.
+
+---
+
+## Predictive Modeling (Readmission Task)
+
+### Build the dataset (multi-core)
+```bash
+cd /Volumes/workspace/Explainable-AI-RAG-Framework
+NEO4J_URI="bolt://127.0.0.1:7687" \
+NEO4J_USER="neo4j" \
+NEO4J_PASSWORD="your_neo4j_password" \
+MAX_WORKERS=12 \
+python scripts/predictive/extract_readmission_dataset.py
+```
+
+### Train the three models
+```bash
+# Tabular model
+python scripts/predictive/train_tabular.py
+
+# Sequence model (GRU on visit types)
+python scripts/predictive/train_sequence.py
+
+# Graph-featurized model
+NEO4J_URI="bolt://127.0.0.1:7687" \
+NEO4J_USER="neo4j" \
+NEO4J_PASSWORD="your_neo4j_password" \
+python scripts/predictive/train_graph.py
+```
+
+### Aggregate metrics for the UI
+```bash
+python scripts/predictive/aggregate_metrics.py
+```
+
+### Model Comparison UI
+Open `http://localhost:3000/doctor/metrics` to view the comparison dashboard.
+
+---
+
+## Open Datasets (Downloaded)
+
+### ClaimsDB (CMS SynPUF sample)
+Downloaded into:
+- `datasets/open/claimsdb`
+
+To convert `.rda` files to CSV (optional):
+```bash
+python scripts/predictive/convert_claimsdb.py
+```
+
+Output CSVs:
+- `datasets/open/claimsdb/converted`

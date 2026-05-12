@@ -1,5 +1,6 @@
 import csv
 import os
+import math
 from collections import defaultdict
 from datetime import datetime
 from neo4j import GraphDatabase
@@ -54,12 +55,14 @@ with open(person_path, newline="", encoding="utf-8") as f:
         patient_ids.add(person_id)
 
 visits_by_patient = defaultdict(list)
+visit_count_by_patient = defaultdict(int)
 with open(visit_path, newline="", encoding="utf-8") as f:
     reader = csv.DictReader(f)
     for row in reader:
         pid = row["person_id"]
         if pid not in patient_ids:
             continue
+        visit_count_by_patient[pid] += 1
         if len(visits_by_patient[pid]) >= MAX_VISITS:
             continue
         visits_by_patient[pid].append({
@@ -69,12 +72,14 @@ with open(visit_path, newline="", encoding="utf-8") as f:
         })
 
 conditions_by_patient = defaultdict(list)
+condition_count_by_patient = defaultdict(int)
 with open(condition_path, newline="", encoding="utf-8") as f:
     reader = csv.DictReader(f)
     for row in reader:
         pid = row["person_id"]
         if pid not in patient_ids:
             continue
+        condition_count_by_patient[pid] += 1
         if len(conditions_by_patient[pid]) >= MAX_CONDITIONS:
             continue
         conditions_by_patient[pid].append({
@@ -83,37 +88,59 @@ with open(condition_path, newline="", encoding="utf-8") as f:
         })
 
 
-def risk_score(pid: str) -> float:
-    visits = len(visits_by_patient[pid])
-    conditions = len(conditions_by_patient[pid])
-    score = min(0.2 + visits * 0.1 + conditions * 0.05, 0.95)
+def risk_score(pid: str, age: int | None) -> float:
+    visits = visit_count_by_patient[pid]
+    conditions = condition_count_by_patient[pid]
+    visit_component = min(0.42, 0.09 * math.log1p(visits))
+    condition_component = min(0.35, 0.10 * math.log1p(conditions))
+    age_component = 0.0
+    if age is not None:
+        if age >= 75:
+            age_component = 0.12
+        elif age >= 60:
+            age_component = 0.08
+        elif age <= 17:
+            age_component = 0.04
+    score = min(0.97, 0.08 + visit_component + condition_component + age_component)
     return round(score, 2)
 
 
 def build_signals(pid: str, age: int | None):
     signals = []
-    visits = len(visits_by_patient[pid])
-    conditions = len(conditions_by_patient[pid])
+    visits = visit_count_by_patient[pid]
+    conditions = condition_count_by_patient[pid]
+    visit_types = {str(v.get("type") or "") for v in visits_by_patient[pid]}
 
-    if visits >= 4:
-        signals.append("High visit burden")
-    elif visits >= 2:
-        signals.append("Recent visit activity")
+    if visits >= 12:
+        signals.append("Very high utilization")
+    elif visits >= 6:
+        signals.append("Frequent recent visits")
+    elif visits >= 3:
+        signals.append("Moderate visit activity")
 
-    if conditions >= 4:
-        signals.append("Multiple chronic conditions")
+    if conditions >= 8:
+        signals.append("Complex multimorbidity")
+    elif conditions >= 4:
+        signals.append("Chronic condition burden")
     elif conditions >= 2:
         signals.append("Comorbidity risk")
 
+    if "9201" in visit_types:
+        signals.append("Recent emergency care")
+    elif "9203" in visit_types:
+        signals.append("Inpatient care history")
+    elif "9202" in visit_types:
+        signals.append("Predominantly outpatient follow-up")
+
     if age is not None:
         if age >= 75:
-            signals.append("Older adult risk")
+            signals.append("Older adult care risk")
         elif age <= 17:
             signals.append("Pediatric monitoring")
 
     if not signals:
-        signals.append("Review patient timeline")
-    return signals
+        signals.append("Lower short-term complexity")
+    return signals[:4]
 
 
 driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
@@ -131,6 +158,8 @@ with driver.session() as session:
                 p.gender = $gender,
                 p.genderLabel = $genderLabel,
                 p.risk = $risk,
+                p.visitCount = $visitCount,
+                p.conditionCount = $conditionCount,
                 p.signals = $signals,
                 p.name = $name
             """,
@@ -139,7 +168,9 @@ with driver.session() as session:
                 "age": patient["age"],
                 "gender": patient["gender"],
                 "genderLabel": patient["genderLabel"],
-                "risk": risk_score(pid),
+                "risk": risk_score(pid, patient["age"]),
+                "visitCount": visit_count_by_patient[pid],
+                "conditionCount": condition_count_by_patient[pid],
                 "signals": build_signals(pid, patient["age"]),
                 "name": f"Patient {pid}",
             },

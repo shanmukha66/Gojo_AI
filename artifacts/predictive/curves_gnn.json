@@ -1,0 +1,24 @@
+{
+  "dataset": "synthea",
+  "model": "gnn_gcn",
+  "roc": [
+    {
+      "fpr": 0.0,
+      "tpr": 0.0
+    },
+    {
+      "fpr": 1.0,
+      "tpr": 1.0
+    }
+  ],
+  "pr": [
+    {
+      "recall": 1.0,
+      "precision": 0.832
+    },
+    {
+      "recall": 0.0,
+      "precision": 1.0
+    }
+  ]
+}

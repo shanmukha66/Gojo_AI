@@ -30,7 +30,7 @@ export async function GET(req: Request) {
           OR p.id = q
         )
       RETURN p { .* } AS p
-      LIMIT 20
+      LIMIT 5
       `,
       { q: query }
     );
@@ -47,7 +47,7 @@ export async function GET(req: Request) {
       }));
 
     return NextResponse.json({ patients, query: raw });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to query Neo4j" }, { status: 500 });
   }
 }

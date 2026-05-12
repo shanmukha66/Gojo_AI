@@ -1,0 +1,9 @@
+Cardiology Associates
+Patient: Robert Williams
+Report Date: 2026-04-01
+BNP 1260 pg/mL 0-100 High
+Creatinine 1.92 mg/dL 0.7-1.3 High
+Potassium 5.4 mmol/L 3.5-5.1 High
+Sodium 132 mmol/L 135-145 Low
+Chest X-Ray Mild pulmonary vascular congestion
+Clinical note: Findings support recent heart failure decompensation with renal vulnerability. Medication reconciliation and daily weights recommended.

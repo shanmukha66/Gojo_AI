@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-03-17T06:23:30.975591Z",
+  "models": [
+    {
+      "roc_auc": 0.9999999999999999,
+      "pr_auc": 1.0,
+      "f1": 1.0,
+      "brier": 0.0035867625,
+      "dataset": "synthea",
+      "model": "tabular_random_forest",
+      "train_size": 4000,
+      "test_size": 1000,
+      "timestamp": "2026-03-17T03:19:40.805911Z"
+    },
+    {
+      "roc_auc": 0.9787982200091575,
+      "pr_auc": 0.9940581511535649,
+      "f1": 0.979767014101778,
+      "brier": 0.031758587807416916,
+      "dataset": "synthea",
+      "model": "sequence_gru",
+      "train_size": 4000,
+      "test_size": 1000,
+      "timestamp": "2026-03-17T03:22:33.029570Z"
+    },
+    {
+      "roc_auc": 0.9795887706043955,
+      "pr_auc": 0.9941703181616453,
+      "f1": 0.9778869778869779,
+      "brier": 0.03402688726782799,
+      "dataset": "synthea",
+      "model": "graph_featurized_xgboost",
+      "train_size": 4000,
+      "test_size": 1000,
+      "timestamp": "2026-03-17T06:22:57.048216Z"
+    },
+    {
+      "roc_auc": 0.9828178694158076,
+      "pr_auc": 0.7847222222222222,
+      "f1": 0.5,
+      "brier": 0.01520671875,
+      "dataset": "claimsdb",
+      "model": "claimsdb_tabular_random_forest",
+      "train_size": 798,
+      "test_size": 200,
+      "timestamp": "2026-03-17T03:28:50.206768Z"
+    },
+    {
+      "roc_auc": 0.9733676975945018,
+      "pr_auc": 0.7285714285714285,
+      "f1": 0.6,
+      "brier": 0.014571983367204666,
+      "dataset": "claimsdb",
+      "model": "claimsdb_sequence_gru",
+      "train_size": 798,
+      "test_size": 200,
+      "timestamp": "2026-03-17T03:31:41.067035Z"
+    },
+    {
+      "roc_auc": 0.993127147766323,
+      "pr_auc": 0.7944444444444443,
+      "f1": 0.6666666666666666,
+      "brier": 0.015276401303708553,
+      "dataset": "claimsdb",
+      "model": "claimsdb_graph_xgboost",
+      "train_size": 798,
+      "test_size": 200,
+      "timestamp": "2026-03-17T06:22:10.143826Z"
+    },
+    {
+      "roc_auc": 0.5,
+      "pr_auc": 0.832,
+      "f1": 0.9082969432314411,
+      "brier": 0.1679999977350235,
+      "dataset": "synthea",
+      "model": "gnn_gcn",
+      "train_size": 4000,
+      "test_size": 1000,
+      "timestamp": "2026-03-17T05:27:47.716591Z"
+    }
+  ]
+}

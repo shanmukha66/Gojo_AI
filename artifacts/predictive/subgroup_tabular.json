@@ -1,0 +1,46 @@
+{
+  "dataset": "synthea",
+  "model": "tabular_random_forest",
+  "groups": [
+    {
+      "group": "age_0-39",
+      "support": 640,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "f1": 1.0,
+      "brier": 0.004800820312500001
+    },
+    {
+      "group": "age_40-64",
+      "support": 348,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "f1": 1.0,
+      "brier": 0.001315607040229885
+    },
+    {
+      "group": "age_65+",
+      "support": 12,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "f1": 1.0,
+      "brier": 0.0047005208333333335
+    },
+    {
+      "group": "gender_Female",
+      "support": 307,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "f1": 1.0,
+      "brier": 0.0041019747557003265
+    },
+    {
+      "group": "gender_Male",
+      "support": 693,
+      "roc_auc": 0.9999999999999999,
+      "pr_auc": 1.0,
+      "f1": 1.0,
+      "brier": 0.0033585227272727274
+    }
+  ]
+}

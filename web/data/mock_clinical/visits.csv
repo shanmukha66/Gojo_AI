@@ -1,0 +1,7 @@
+visit_id,patient_record_id,start,end,type,title,description
+mock-visit-91001-1,91001,2026-03-18T09:20:00.000Z,2026-03-18T10:05:00.000Z,Emergency,Emergency department evaluation,"Presented with dizziness, polyuria, and home glucose readings above 280 mg/dL. Discharged with urgent diabetes follow-up."
+mock-visit-91001-2,91001,2026-04-02T14:00:00.000Z,2026-04-02T14:35:00.000Z,Outpatient,Endocrinology follow-up,"Medication review, dietary counseling, and repeat labs ordered for glycemic control and kidney monitoring."
+mock-visit-91002-1,91002,2026-03-26T22:15:00.000Z,2026-03-28T11:40:00.000Z,Inpatient,COPD exacerbation admission,"Admitted for wheezing and oxygen saturation 88 percent on room air. Improved after nebulizers, steroids, and antibiotics."
+mock-visit-91003-1,91003,2026-04-06T08:30:00.000Z,2026-04-06T09:00:00.000Z,Outpatient,Primary care review,"Fatigue and exertional shortness of breath. CBC and iron studies reviewed; oral iron plan discussed."
+mock-visit-91004-1,91004,2026-03-30T16:45:00.000Z,2026-04-01T12:20:00.000Z,Inpatient,Heart failure decompensation,"Admitted for dyspnea, edema, and elevated BNP. Diuresed with improvement and cardiology follow-up arranged."
+mock-visit-91005-1,91005,2026-04-10T10:10:00.000Z,2026-04-10T10:40:00.000Z,Outpatient,Postpartum thyroid check,"Palpitations improving. Thyroid labs reviewed and repeat TSH planned in six weeks."

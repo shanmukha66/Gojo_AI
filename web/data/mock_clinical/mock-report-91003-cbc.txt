@@ -1,0 +1,9 @@
+Community Clinic Laboratory
+Patient: Grace Chen
+Report Date: 2026-04-06
+Hemoglobin 9.8 g/dL 12.0-15.5 Low
+Hematocrit 31.2 % 36-46 Low
+MCV 72 fL 80-100 Low
+Ferritin 8 ng/mL 15-150 Low
+Iron Saturation 9 % 20-50 Low
+Assessment note: Pattern is compatible with iron deficiency anemia. Evaluate menstrual and gastrointestinal blood loss if symptoms persist.

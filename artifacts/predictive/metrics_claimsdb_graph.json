@@ -1,0 +1,11 @@
+{
+  "roc_auc": 0.993127147766323,
+  "pr_auc": 0.7944444444444443,
+  "f1": 0.6666666666666666,
+  "brier": 0.015276401303708553,
+  "dataset": "claimsdb",
+  "model": "claimsdb_graph_xgboost",
+  "train_size": 798,
+  "test_size": 200,
+  "timestamp": "2026-03-17T06:22:10.143826Z"
+}

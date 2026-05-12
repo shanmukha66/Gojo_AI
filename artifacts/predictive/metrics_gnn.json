@@ -1,0 +1,11 @@
+{
+  "roc_auc": 0.5,
+  "pr_auc": 0.832,
+  "f1": 0.9082969432314411,
+  "brier": 0.1679999977350235,
+  "dataset": "synthea",
+  "model": "gnn_gcn",
+  "train_size": 4000,
+  "test_size": 1000,
+  "timestamp": "2026-03-17T05:27:47.716591Z"
+}

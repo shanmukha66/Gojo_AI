@@ -1,10 +1,10 @@
-import neo4j from "neo4j-driver";
+import neo4j, { type Driver, type Integer } from "neo4j-driver";
 
 const uri = process.env.NEO4J_URI || "";
 const user = process.env.NEO4J_USER || "";
 const password = process.env.NEO4J_PASSWORD || "";
 
-let driver: neo4j.Driver | null = null;
+let driver: Driver | null = null;
 
 export function getDriver() {
   if (!uri || !user || !password) {
@@ -20,8 +20,26 @@ export async function runQuery<T = unknown>(query: string, params?: Record<strin
   const session = getDriver().session();
   try {
     const result = await session.run(query, params);
-    return result.records.map((record) => record.toObject()) as T[];
+    return result.records.map((record) => toNative(record.toObject())) as T[];
   } finally {
     await session.close();
   }
+}
+
+function toNative(value: unknown): unknown {
+  if (neo4j.isInt(value)) {
+    return (value as Integer).toNumber();
+  }
+  if (Array.isArray(value)) {
+    return value.map((item) => toNative(item));
+  }
+  if (value && typeof value === "object") {
+    const obj = value as Record<string, unknown>;
+    const out: Record<string, unknown> = {};
+    for (const key of Object.keys(obj)) {
+      out[key] = toNative(obj[key]);
+    }
+    return out;
+  }
+  return value;
 }

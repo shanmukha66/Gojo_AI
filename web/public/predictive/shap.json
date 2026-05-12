@@ -1,0 +1,85 @@
+{
+  "generated_at": "2026-03-17T06:23:30.979842Z",
+  "models": [
+    {
+      "dataset": "synthea",
+      "model": "tabular_random_forest",
+      "features": [
+        {
+          "name": "num__min_days_between_visits",
+          "importance": 0.28724605416225474
+        },
+        {
+          "name": "num__condition_count",
+          "importance": 0.08628626674260279
+        },
+        {
+          "name": "num__visit_count",
+          "importance": 0.08374893463049074
+        },
+        {
+          "name": "num__risk",
+          "importance": 0.01402799641247195
+        },
+        {
+          "name": "num__age",
+          "importance": 0.012616828242305133
+        },
+        {
+          "name": "num__avg_days_between_visits",
+          "importance": 0.008663912437643851
+        },
+        {
+          "name": "num__recent_visit_gap_days",
+          "importance": 0.005666680607496759
+        },
+        {
+          "name": "cat__gender_Female",
+          "importance": 0.000700795605221312
+        },
+        {
+          "name": "cat__gender_Male",
+          "importance": 0.0005328859530459797
+        }
+      ]
+    },
+    {
+      "dataset": "claimsdb",
+      "model": "claimsdb_tabular_random_forest",
+      "features": [
+        {
+          "name": "num__inpatient_visits",
+          "importance": 0.22012177815947562
+        },
+        {
+          "name": "num__outpatient_visits",
+          "importance": 0.11038900171590207
+        },
+        {
+          "name": "num__condition_popularity_mean",
+          "importance": 0.0489828684867635
+        },
+        {
+          "name": "num__condition_popularity_sum",
+          "importance": 0.040669241704103895
+        },
+        {
+          "name": "num__chronic_condition_count",
+          "importance": 0.03711915306921385
+        },
+        {
+          "name": "num__age",
+          "importance": 0.03509040816991754
+        },
+        {
+          "name": "cat__gender_1",
+          "importance": 0.007518357640736301
+        },
+        {
+          "name": "cat__gender_2",
+          "importance": 0.0065430323621865315
+        }
+      ]
+    }
+  ]
+}

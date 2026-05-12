@@ -4,6 +4,11 @@
 # env / secrets
 .env
 .env.*
+!.env.example
+!.env.local.example
+web/.env
+web/.env.local
+web/.env.*.local
 
 # python
 __pycache__/
@@ -22,6 +27,29 @@ web/out/
 web/coverage/
 web/.vercel/
 
+# local runtime / generated data
+.run/
+*.log
+*.pid
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+web/data/app.db
+web/data/app.db-shm
+web/data/app.db-wal
+web/data/uploads/
+web/data/exports/
+web/data/runtime/
+web/data/tmp/
+web/data/mock_clinical/generated-report-*.txt
+web/public/uploads/
+
 # large local data
 datasets/
 
+# generated office/export artifacts
+*.xlsx
+*.xls
+~$*.docx

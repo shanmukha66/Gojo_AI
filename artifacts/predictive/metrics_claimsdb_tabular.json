@@ -1,0 +1,11 @@
+{
+  "roc_auc": 0.9828178694158076,
+  "pr_auc": 0.7847222222222222,
+  "f1": 0.5,
+  "brier": 0.01520671875,
+  "dataset": "claimsdb",
+  "model": "claimsdb_tabular_random_forest",
+  "train_size": 798,
+  "test_size": 200,
+  "timestamp": "2026-03-17T03:28:50.206768Z"
+}

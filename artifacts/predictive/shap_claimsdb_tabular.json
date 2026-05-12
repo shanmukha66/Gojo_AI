@@ -1,0 +1,38 @@
+{
+  "dataset": "claimsdb",
+  "model": "claimsdb_tabular_random_forest",
+  "features": [
+    {
+      "name": "num__inpatient_visits",
+      "importance": 0.22012177815947562
+    },
+    {
+      "name": "num__outpatient_visits",
+      "importance": 0.11038900171590207
+    },
+    {
+      "name": "num__condition_popularity_mean",
+      "importance": 0.0489828684867635
+    },
+    {
+      "name": "num__condition_popularity_sum",
+      "importance": 0.040669241704103895
+    },
+    {
+      "name": "num__chronic_condition_count",
+      "importance": 0.03711915306921385
+    },
+    {
+      "name": "num__age",
+      "importance": 0.03509040816991754
+    },
+    {
+      "name": "cat__gender_1",
+      "importance": 0.007518357640736301
+    },
+    {
+      "name": "cat__gender_2",
+      "importance": 0.0065430323621865315
+    }
+  ]
+}

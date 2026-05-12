@@ -1,0 +1,11 @@
+{
+  "roc_auc": 0.9795887706043955,
+  "pr_auc": 0.9941703181616453,
+  "f1": 0.9778869778869779,
+  "brier": 0.03402688726782799,
+  "dataset": "synthea",
+  "model": "graph_featurized_xgboost",
+  "train_size": 4000,
+  "test_size": 1000,
+  "timestamp": "2026-03-17T06:22:57.048216Z"
+}

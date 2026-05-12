@@ -1,0 +1,303 @@
+{
+  "generated_at": "2026-03-17T06:23:30.979181Z",
+  "models": [
+    {
+      "dataset": "synthea",
+      "model": "tabular_random_forest",
+      "groups": [
+        {
+          "group": "age_0-39",
+          "support": 640,
+          "roc_auc": 1.0,
+          "pr_auc": 1.0,
+          "f1": 1.0,
+          "brier": 0.004800820312500001
+        },
+        {
+          "group": "age_40-64",
+          "support": 348,
+          "roc_auc": 1.0,
+          "pr_auc": 1.0,
+          "f1": 1.0,
+          "brier": 0.001315607040229885
+        },
+        {
+          "group": "age_65+",
+          "support": 12,
+          "roc_auc": 1.0,
+          "pr_auc": 1.0,
+          "f1": 1.0,
+          "brier": 0.0047005208333333335
+        },
+        {
+          "group": "gender_Female",
+          "support": 307,
+          "roc_auc": 1.0,
+          "pr_auc": 1.0,
+          "f1": 1.0,
+          "brier": 0.0041019747557003265
+        },
+        {
+          "group": "gender_Male",
+          "support": 693,
+          "roc_auc": 0.9999999999999999,
+          "pr_auc": 1.0,
+          "f1": 1.0,
+          "brier": 0.0033585227272727274
+        }
+      ]
+    },
+    {
+      "dataset": "synthea",
+      "model": "sequence_gru",
+      "groups": [
+        {
+          "group": "age_0-39",
+          "support": 640,
+          "roc_auc": 0.9658422852867298,
+          "pr_auc": 0.9860270087542815,
+          "f1": 0.9670563230605739,
+          "brier": 0.04609242081642151
+        },
+        {
+          "group": "age_40-64",
+          "support": 348,
+          "roc_auc": 0.9967853042479908,
+          "pr_auc": 0.9998444609421613,
+          "f1": 0.9970059880239521,
+          "brier": 0.006241427268832922
+        },
+        {
+          "group": "age_65+",
+          "support": 12,
+          "roc_auc": 1.0,
+          "pr_auc": 1.0,
+          "f1": 1.0,
+          "brier": 0.007285138126462698
+        },
+        {
+          "group": "gender_Female",
+          "support": 307,
+          "roc_auc": 0.9670692943420216,
+          "pr_auc": 0.9877513661937707,
+          "f1": 0.9702127659574468,
+          "brier": 0.04224374145269394
+        },
+        {
+          "group": "gender_Male",
+          "support": 693,
+          "roc_auc": 0.9836021063024518,
+          "pr_auc": 0.9960761550649886,
+          "f1": 0.983634797588286,
+          "brier": 0.027113648131489754
+        }
+      ]
+    },
+    {
+      "dataset": "synthea",
+      "model": "graph_featurized_xgboost",
+      "groups": [
+        {
+          "group": "age_0-39",
+          "support": 640,
+          "roc_auc": 0.9679600235155792,
+          "pr_auc": 0.9859748538671163,
+          "f1": 0.9670563230605739,
+          "brier": 0.04651162773370743
+        },
+        {
+          "group": "age_40-64",
+          "support": 348,
+          "roc_auc": 0.9970149253731344,
+          "pr_auc": 0.9997769771830503,
+          "f1": 0.9924812030075187,
+          "brier": 0.012192082591354847
+        },
+        {
+          "group": "age_65+",
+          "support": 12,
+          "roc_auc": 1.0,
+          "pr_auc": 1.0,
+          "f1": 1.0,
+          "brier": 0.0013833999400958419
+        },
+        {
+          "group": "gender_Female",
+          "support": 307,
+          "roc_auc": 0.970184361093452,
+          "pr_auc": 0.9877513661937707,
+          "f1": 0.9702127659574468,
+          "brier": 0.04386148974299431
+        },
+        {
+          "group": "gender_Male",
+          "support": 693,
+          "roc_auc": 0.9835938785584993,
+          "pr_auc": 0.9961581415825028,
+          "f1": 0.9810017271157168,
+          "brier": 0.029670145362615585
+        }
+      ]
+    },
+    {
+      "dataset": "claimsdb",
+      "model": "claimsdb_tabular_random_forest",
+      "groups": [
+        {
+          "group": "age_40-64",
+          "support": 8,
+          "roc_auc": null,
+          "pr_auc": null,
+          "f1": null,
+          "brier": null
+        },
+        {
+          "group": "age_65+",
+          "support": 192,
+          "roc_auc": 0.9820788530465949,
+          "pr_auc": 0.7847222222222222,
+          "f1": 0.5,
+          "brier": 0.01583916015625
+        },
+        {
+          "group": "gender_1",
+          "support": 76,
+          "roc_auc": 1.0,
+          "pr_auc": 1.0,
+          "f1": 1.0,
+          "brier": 0.0037787006578947377
+        },
+        {
+          "group": "gender_2",
+          "support": 124,
+          "roc_auc": 0.9798319327731093,
+          "pr_auc": 0.7709090909090908,
+          "f1": 0.3333333333333333,
+          "brier": 0.022210987903225808
+        }
+      ]
+    },
+    {
+      "dataset": "claimsdb",
+      "model": "claimsdb_sequence_gru",
+      "groups": [
+        {
+          "group": "age_40-64",
+          "support": 8,
+          "roc_auc": null,
+          "pr_auc": null,
+          "f1": null,
+          "brier": null
+        },
+        {
+          "group": "age_65+",
+          "support": 192,
+          "roc_auc": 0.9722222222222222,
+          "pr_auc": 0.7285714285714285,
+          "f1": 0.6,
+          "brier": 0.015172473154962063
+        },
+        {
+          "group": "gender_1",
+          "support": 76,
+          "roc_auc": 1.0,
+          "pr_auc": 1.0,
+          "f1": 0.0,
+          "brier": 0.005385189317166805
+        },
+        {
+          "group": "gender_2",
+          "support": 124,
+          "roc_auc": 0.9663865546218487,
+          "pr_auc": 0.7333333333333334,
+          "f1": 0.6666666666666666,
+          "brier": 0.020202599465847015
+        }
+      ]
+    },
+    {
+      "dataset": "claimsdb",
+      "model": "claimsdb_graph_xgboost",
+      "groups": [
+        {
+          "group": "age_40-64",
+          "support": 8,
+          "roc_auc": null,
+          "pr_auc": null,
+          "f1": null,
+          "brier": null
+        },
+        {
+          "group": "age_65+",
+          "support": 192,
+          "roc_auc": 0.9928315412186379,
+          "pr_auc": 0.7944444444444443,
+          "f1": 0.6666666666666666,
+          "brier": 0.015911303460597992
+        },
+        {
+          "group": "gender_1",
+          "support": 76,
+          "roc_auc": 1.0,
+          "pr_auc": 1.0,
+          "f1": 1.0,
+          "brier": 0.0016182344406843185
+        },
+        {
+          "group": "gender_2",
+          "support": 124,
+          "roc_auc": 0.9899159663865547,
+          "pr_auc": 0.8057142857142858,
+          "f1": 0.6,
+          "brier": 0.02364753559231758
+        }
+      ]
+    },
+    {
+      "dataset": "synthea",
+      "model": "gnn_gcn",
+      "groups": [
+        {
+          "group": "age_0-39",
+          "support": 640,
+          "roc_auc": 0.5,
+          "pr_auc": 0.759375,
+          "f1": 0.8632326820603907,
+          "brier": 0.24062499403953552
+        },
+        {
+          "group": "age_40-64",
+          "support": 348,
+          "roc_auc": 0.5,
+          "pr_auc": 0.9626436781609196,
+          "f1": 0.9809663250366032,
+          "brier": 0.03735632076859474
+        },
+        {
+          "group": "age_65+",
+          "support": 12,
+          "roc_auc": 0.5,
+          "pr_auc": 0.9166666666666666,
+          "f1": 0.9565217391304348,
+          "brier": 0.0833333358168602
+        },
+        {
+          "group": "gender_Female",
+          "support": 307,
+          "roc_auc": 0.5,
+          "pr_auc": 0.7882736156351792,
+          "f1": 0.8816029143897997,
+          "brier": 0.2117263823747635
+        },
+        {
+          "group": "gender_Male",
+          "support": 693,
+          "roc_auc": 0.5,
+          "pr_auc": 0.8513708513708513,
+          "f1": 0.9197194076383476,
+          "brier": 0.14862914383411407
+        }
+      ]
+    }
+  ]
+}

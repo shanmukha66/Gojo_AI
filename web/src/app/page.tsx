@@ -1,21 +1,23 @@
 import Link from "next/link";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       <div className="grid-dots" />
-      <div className="container-shell">
-        <header className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="h-12 w-12 rounded-2xl bg-[var(--accent)] text-[#071012] grid place-items-center font-semibold text-lg">
-              A
+      <div className="container-shell page-shell">
+        <header className="app-header fade-up">
+          <div className="app-header__cluster">
+            <div className="h-14 w-14 rounded-[1.35rem] bg-[var(--accent)] text-[#071012] grid place-items-center font-semibold text-xl shadow-[0_16px_40px_-24px_rgba(70,198,177,0.8)]">
+              G
             </div>
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-[var(--ink-muted)]">Aegis Health</p>
-              <p className="text-lg font-semibold">Explainable AI + RAG</p>
+              <p className="eyebrow">GOJO Health App</p>
+              <p className="text-lg font-semibold mt-1">Explainable AI + RAG Clinical Support</p>
             </div>
           </div>
-          <div className="flex gap-3">
+          <div className="app-header__cluster">
+            <ThemeToggle />
             <Link className="btn-secondary" href="/login">
               Sign In
             </Link>
@@ -25,7 +27,7 @@ export default function Home() {
           </div>
         </header>
 
-        <section className="hero">
+        <section className="hero fade-up" style={{ animationDelay: "120ms" }}>
           <div className="fade-up">
             <span className="badge">Human-led. AI‑assisted. Evidence‑grounded.</span>
             <h1 className="text-4xl md:text-6xl font-semibold leading-tight mt-4">
@@ -44,7 +46,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="glass p-6 fade-up" style={{ animationDelay: "120ms" }}>
+          <div className="glass fade-up" style={{ animationDelay: "160ms" }}>
             <div className="card-contrast">
               <div className="panel-header">
                 <p className="section-title">What the system delivers</p>
@@ -70,7 +72,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="grid md:grid-cols-2 gap-6 mt-8">
+        <section className="grid md:grid-cols-2 gap-6 mt-2">
           <div className="card-contrast">
             <p className="section-title">Doctor Workspace</p>
             <p className="subtle mt-2">

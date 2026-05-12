@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { getCurrentUser, SESSION_COOKIE } from "@/lib/auth";
 import { runQuery } from "@/lib/neo4j";
+import { getConceptMap } from "@/lib/omop";
 
 export async function GET(
   _req: Request,
@@ -40,9 +41,25 @@ export async function GET(
     { id }
   );
 
+  const conceptMap = await getConceptMap();
+
+  const mappedVisits = visits.map((row) => {
+    const type = row.v.type;
+    const typeName = type ? conceptMap.get(String(type))?.name : undefined;
+    return { ...row.v, typeName };
+  });
+
+  const mappedConditions = conditions
+    .map((row) => {
+      const code = row.c.code;
+      const name = code ? conceptMap.get(String(code))?.name : undefined;
+      return { ...row.c, name };
+    })
+    .filter((c) => c.code && String(c.code) !== "0");
+
   return NextResponse.json({
     patient: patient[0]?.p ?? null,
-    visits: visits.map((row) => row.v),
-    conditions: conditions.map((row) => row.c),
+    visits: mappedVisits,
+    conditions: mappedConditions,
   });
 }

@@ -1,0 +1,6 @@
+patient_record_id,patient_user_id,name,email,age,gender,risk,signals,conditions
+91001,mock-patient-91001,Anika Rao,anika.rao.patient@example.com,58,F,0.82,"Uncontrolled diabetes; CKD stage 3; recurrent ED use",E11.9|N18.30|I10|E78.5
+91002,mock-patient-91002,Michael Torres,michael.torres.patient@example.com,67,M,0.74,"COPD flare; oxygen desaturation; recent admission",J44.9|I50.9|I10|Z87.891
+91003,mock-patient-91003,Grace Chen,grace.chen.patient@example.com,45,F,0.41,"Iron deficiency anemia; fatigue; outpatient follow-up",D50.9|R53.83|K21.9
+91004,mock-patient-91004,Robert Williams,robert.williams.patient@example.com,72,M,0.88,"Heart failure; elevated BNP; medication adherence concern",I50.23|I25.10|E11.22|N18.32
+91005,mock-patient-91005,Sofia Martinez,sofia.martinez.patient@example.com,31,F,0.29,"Postpartum thyroid monitoring; low acute risk",E03.9|O90.5|R00.2

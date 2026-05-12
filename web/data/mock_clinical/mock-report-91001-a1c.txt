@@ -1,0 +1,9 @@
+GOJO Regional Laboratory
+Patient: Anika Rao
+Report Date: 2026-04-02
+Hemoglobin A1c 9.4 % 4.0-5.6 High
+Glucose 286 mg/dL 70-99 High
+Creatinine 1.64 mg/dL 0.57-1.00 High
+eGFR 38 mL/min/1.73m2 60-120 Low
+Urine Albumin/Creatinine Ratio 182 mg/g 0-30 High
+Clinical note: Results suggest poor glycemic control with reduced kidney function. Correlate with medication adherence, hydration, and blood pressure control.

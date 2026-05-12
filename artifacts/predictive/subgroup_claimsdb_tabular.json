@@ -1,0 +1,38 @@
+{
+  "dataset": "claimsdb",
+  "model": "claimsdb_tabular_random_forest",
+  "groups": [
+    {
+      "group": "age_40-64",
+      "support": 8,
+      "roc_auc": null,
+      "pr_auc": null,
+      "f1": null,
+      "brier": null
+    },
+    {
+      "group": "age_65+",
+      "support": 192,
+      "roc_auc": 0.9820788530465949,
+      "pr_auc": 0.7847222222222222,
+      "f1": 0.5,
+      "brier": 0.01583916015625
+    },
+    {
+      "group": "gender_1",
+      "support": 76,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "f1": 1.0,
+      "brier": 0.0037787006578947377
+    },
+    {
+      "group": "gender_2",
+      "support": 124,
+      "roc_auc": 0.9798319327731093,
+      "pr_auc": 0.7709090909090908,
+      "f1": 0.3333333333333333,
+      "brier": 0.022210987903225808
+    }
+  ]
+}

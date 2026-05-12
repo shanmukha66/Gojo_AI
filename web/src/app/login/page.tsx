@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import ThemeToggle from "@/components/ThemeToggle";
 
 async function safeJson(res: Response) {
   const text = await res.text();
@@ -48,15 +49,29 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen">
       <div className="grid-dots" />
-      <div className="container-shell">
-        <div className="max-w-lg mx-auto card-contrast p-8">
+      <div className="container-shell page-shell">
+        <header className="app-header fade-up">
+          <div>
+            <p className="eyebrow">GOJO Health App</p>
+            <h1 className="text-3xl font-semibold mt-2">Secure sign in</h1>
+            <p className="subtle text-sm mt-2">Doctors and patients use the same login entry and then land in their own workspaces.</p>
+          </div>
+          <div className="app-header__cluster">
+            <ThemeToggle />
+            <Link className="btn-secondary" href="/">
+              Home
+            </Link>
+          </div>
+        </header>
+
+        <div className="max-w-xl mx-auto card-contrast fade-up" style={{ animationDelay: "120ms" }}>
           <span className="badge">Secure access</span>
-          <h1 className="text-3xl font-semibold mt-3">Welcome back</h1>
-          <p className="subtle mt-2">
-            Sign in to access your workspace. Doctors and patients have distinct dashboards.
+          <h1 className="text-4xl font-semibold mt-4">Welcome back</h1>
+          <p className="subtle mt-3 text-base">
+            Sign in to access your workspace. The refreshed UI keeps the experience lighter and more legible across both themes.
           </p>
 
-          <form onSubmit={onSubmit} className="mt-6 space-y-4">
+          <form onSubmit={onSubmit} className="mt-8 space-y-4">
             <div>
               <label>Email</label>
               <input
@@ -78,14 +93,14 @@ export default function LoginPage() {
               />
             </div>
 
-            {error && <p className="text-red-400 text-sm">{error}</p>}
+            {error && <p className="text-[var(--danger)] text-sm">{error}</p>}
 
             <button className="btn-primary w-full" disabled={loading}>
               {loading ? "Signing in..." : "Sign In"}
             </button>
           </form>
 
-          <p className="subtle mt-4 text-sm">
+          <p className="subtle mt-5 text-sm">
             New here? <Link className="text-[var(--accent)]" href="/register">Create an account</Link>.
           </p>
         </div>

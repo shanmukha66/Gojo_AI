@@ -1,0 +1,8 @@
+Metro Hospital Discharge Summary
+Patient: Michael Torres
+Admission: 2026-03-26
+Discharge: 2026-03-28
+Oxygen Saturation 88 % 95-100 Low
+WBC 13.8 K/uL 4.0-11.0 High
+Chest X-Ray Hyperinflation with no focal consolidation
+Diagnosis: COPD exacerbation, improved after bronchodilators, prednisone, and azithromycin. Follow up with pulmonology within 7 days. Return precautions reviewed for worsening shortness of breath or fever.

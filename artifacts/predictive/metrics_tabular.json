@@ -1,0 +1,11 @@
+{
+  "roc_auc": 0.9999999999999999,
+  "pr_auc": 1.0,
+  "f1": 1.0,
+  "brier": 0.0035867625,
+  "dataset": "synthea",
+  "model": "tabular_random_forest",
+  "train_size": 4000,
+  "test_size": 1000,
+  "timestamp": "2026-03-17T03:19:40.805911Z"
+}

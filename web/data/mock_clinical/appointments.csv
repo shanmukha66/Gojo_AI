@@ -1,0 +1,4 @@
+appointment_id,patient_record_id,patient_user_id,slot_start,slot_end,status,reason
+mock-appt-91001,91001,mock-patient-91001,2026-05-08T16:00:00.000Z,2026-05-08T16:30:00.000Z,confirmed,Diabetes medication adjustment and renal lab follow-up
+mock-appt-91002,91002,mock-patient-91002,2026-05-09T18:30:00.000Z,2026-05-09T19:00:00.000Z,booked,Post-discharge COPD follow-up and inhaler technique review
+mock-appt-91004,91004,mock-patient-91004,2026-05-10T15:00:00.000Z,2026-05-10T15:45:00.000Z,confirmed,Heart failure discharge follow-up and weight log review

@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-ROOT="/Volumes/workspace/Explainable-AI-RAG-Framework"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 RUN_DIR="$ROOT/.run"
 WEB_PID_FILE="$RUN_DIR/web.pid"
 

@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-ROOT="/Volumes/workspace/Explainable-AI-RAG-Framework"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 WEB_DIR="$ROOT/web"
 RUN_DIR="$ROOT/.run"
 LOG_DIR="$RUN_DIR/logs"
@@ -11,6 +11,7 @@ WEB_PID_FILE="$RUN_DIR/web.pid"
 WEB_PORT="3000"
 NEO4J_HOST="127.0.0.1"
 NEO4J_PORT="7687"
+REQUIRE_NEO4J="${REQUIRE_NEO4J:-0}"
 
 mkdir -p "$LOG_DIR"
 
@@ -54,19 +55,27 @@ wait_for_port() {
 
 echo "Starting GOJO Health App locally"
 
-if ! command -v neo4j >/dev/null 2>&1; then
-  echo "neo4j CLI is not installed or not on PATH"
-  exit 1
-fi
-
 if ! command -v npm >/dev/null 2>&1; then
   echo "npm is not installed or not on PATH"
   exit 1
 fi
 
-echo "Ensuring Neo4j is running..."
-neo4j start >/dev/null 2>&1 || true
-wait_for_port "$NEO4J_HOST" "$NEO4J_PORT" "Neo4j"
+if command -v neo4j >/dev/null 2>&1; then
+  echo "Ensuring Neo4j is running..."
+  neo4j start >/dev/null 2>&1 || true
+  if ! wait_for_port "$NEO4J_HOST" "$NEO4J_PORT" "Neo4j"; then
+    if [[ "$REQUIRE_NEO4J" == "1" ]]; then
+      exit 1
+    fi
+    echo "Continuing without Neo4j. SQL-backed demo pages will still run."
+  fi
+else
+  if [[ "$REQUIRE_NEO4J" == "1" ]]; then
+    echo "neo4j CLI is not installed or not on PATH"
+    exit 1
+  fi
+  echo "neo4j CLI is not installed or not on PATH; continuing without Neo4j."
+fi
 
 kill_if_running "$WEB_PID_FILE"
 kill_port_if_busy "$WEB_PORT"
